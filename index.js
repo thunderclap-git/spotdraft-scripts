@@ -353,29 +353,28 @@ class Calculator {
                 const other_pp = form.querySelector(`[${ROI_CALC_INPUT}="split_of_3pp"]`);
                 const other_ppValue = parseNumber(form.querySelector(`[${ROI_CALC_INPUT}="split_of_3pp"]`).value);
 
-                if ((other_ppValue + value) > 100) {
+                // if ((other_ppValue + value) > 100) {
                     other_pp.value = 100 - value;
                     updateSliderWidths();
-                }
+                // }
 
             } else if (name === 'split_of_3pp') {
                 const other_pp = form.querySelector(`[${ROI_CALC_INPUT}="split_of_1pp"]`);
                 const other_ppValue = parseNumber(form.querySelector(`[${ROI_CALC_INPUT}="split_of_1pp"]`).value);
 
-                if ((other_ppValue + value) > 100) {
+                // if ((other_ppValue + value) > 100) {
                     other_pp.value = 100 - value;
                     updateSliderWidths();
-                }
+                // }
             }
 
             updateSliderPreview(form);
 
-
-
-        } else {
+        } 
+        // else {
             if (isNaN(value) || !value) this[name] = 0;
             else this[name] = value;
-        }
+        // }
         this.calculateSalesSavings(this.assumptions);
     }
 
@@ -522,7 +521,7 @@ class Calculator {
 assignCalculators();
 
 function assignCalculators() {
-    handleFormSelectionChange('both');
+    handleFormSelectionChange('sales');
 
     // sales
     const salesForm = document.querySelector(`[${ROI_CALC_FORM_TYPE}=sales]`);
