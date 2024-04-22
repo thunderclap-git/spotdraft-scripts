@@ -12,6 +12,8 @@ const ROI_CALC_RESULT = 'roi-calc-result';
 const ROI_CALC_SELECTION_OPTION = 'roi-calc-option';
 const ROI_CALC_FORM_ELEMENT = 'roi-calc-element';
 
+const ROI_CALC_DIVIDER = 'roi-calc-divider';
+
 const DEFAULT_VALUES = {
     sales: {
         total_no_of_sales_contract_annually: '500',
@@ -156,7 +158,14 @@ function handleFormSelectionChange(value) {
     const salesForm = document.querySelector(`[${ROI_CALC_FORM_TYPE}=sales]`);
     const vendorForm = document.querySelector(`[${ROI_CALC_FORM_TYPE}=vendor]`);
 
-    // Determine visibility and opacity based on the selected value
+    const divider = document.querySelector(`[${ROI_CALC_DIVIDER}]`);
+    if(value !== 'both') {
+        divider.style.display = 'none';
+    }else{
+        divider.style.display = 'block';
+    }
+
+    // Determine border bottom based on the selected value
     const isSalesSelected = value === 'sales';
     const isVendorSelected = value === 'vendor';
     const isBothSelected = value === 'both';
@@ -756,7 +765,7 @@ function injectSliderCSS() {
             margin-top: 2px;
         }
         [tc-range-elm="input"]::-webkit-slider-thumb:active {
-            background-color: #5c2aff;
+            background-color: #163694;
         }
     `;
 
