@@ -68,7 +68,7 @@ async function generateReport(form) {
 
     console.log('submitting form');
     const API_URL =
-        'https://roi-calculator-self.vercel.app/api';
+        'https://nodejs-serverless-function-express-eight-eta.vercel.app/api';
     // 'http://www.localhost:3000/api';
 
     if (currentFormSelection === 'sales') {
