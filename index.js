@@ -68,7 +68,7 @@ async function generateReport(form) {
 
     console.log('submitting form');
     const API_URL =
-        'https://nodejs-serverless-function-express-zeta-lyart.vercel.app/api';
+        'https://roi-calculator-self.vercel.app/api';
     // 'http://www.localhost:3000/api';
 
     if (currentFormSelection === 'sales') {
