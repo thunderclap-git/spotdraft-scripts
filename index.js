@@ -152,6 +152,8 @@ selectionButtons[2].addEventListener('click', function() {
     handleFormSelectionChange('both');
 });
 
+const windowWidth = window.innerWidth;
+
 function handleFormSelectionChange(value) {
     currentFormSelection = value;
 
@@ -178,10 +180,13 @@ function handleFormSelectionChange(value) {
     // Set opacity for selection buttons
     selectionButtons.forEach((button) => {
         const buttonValue = button.getAttribute(ROI_CALC_SELECTION_OPTION);
-        button.style.borderBottom = buttonValue === value ? '1px solid #ab5240' : '0px'
-            // button.style.opacity =
-            //     buttonValue === value ? '1' : OPACITY_DROP.toString();
+        if(windowWidth < 768){
+            button.style.background = buttonValue === value ? '#B5C1F0' : '#ebf0ff'
+        }else{
+            button.style.borderBottom = buttonValue === value ? '1px solid #ab5240' : '0px'
+        }
     });
+    
 
     Webflow.destroy();
     Webflow.ready();
@@ -353,29 +358,28 @@ class Calculator {
                 const other_pp = form.querySelector(`[${ROI_CALC_INPUT}="split_of_3pp"]`);
                 const other_ppValue = parseNumber(form.querySelector(`[${ROI_CALC_INPUT}="split_of_3pp"]`).value);
 
-                if ((other_ppValue + value) > 100) {
+                // if ((other_ppValue + value) > 100) {
                     other_pp.value = 100 - value;
                     updateSliderWidths();
-                }
+                // }
 
             } else if (name === 'split_of_3pp') {
                 const other_pp = form.querySelector(`[${ROI_CALC_INPUT}="split_of_1pp"]`);
                 const other_ppValue = parseNumber(form.querySelector(`[${ROI_CALC_INPUT}="split_of_1pp"]`).value);
 
-                if ((other_ppValue + value) > 100) {
+                // if ((other_ppValue + value) > 100) {
                     other_pp.value = 100 - value;
                     updateSliderWidths();
-                }
+                // }
             }
 
             updateSliderPreview(form);
 
-
-
-        } else {
+        } 
+        // else {
             if (isNaN(value) || !value) this[name] = 0;
             else this[name] = value;
-        }
+        // }
         this.calculateSalesSavings(this.assumptions);
     }
 
@@ -522,7 +526,7 @@ class Calculator {
 assignCalculators();
 
 function assignCalculators() {
-    handleFormSelectionChange('both');
+    handleFormSelectionChange('sales');
 
     // sales
     const salesForm = document.querySelector(`[${ROI_CALC_FORM_TYPE}=sales]`);
