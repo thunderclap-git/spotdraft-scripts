@@ -152,6 +152,8 @@ selectionButtons[2].addEventListener('click', function() {
     handleFormSelectionChange('both');
 });
 
+const windowWidth = window.innerWidth;
+
 function handleFormSelectionChange(value) {
     currentFormSelection = value;
 
@@ -178,10 +180,13 @@ function handleFormSelectionChange(value) {
     // Set opacity for selection buttons
     selectionButtons.forEach((button) => {
         const buttonValue = button.getAttribute(ROI_CALC_SELECTION_OPTION);
-        button.style.borderBottom = buttonValue === value ? '1px solid #ab5240' : '0px'
-            // button.style.opacity =
-            //     buttonValue === value ? '1' : OPACITY_DROP.toString();
+        if(windowWidth < 768){
+            button.style.background = buttonValue === value ? '#B5C1F0' : '#ebf0ff'
+        }else{
+            button.style.borderBottom = buttonValue === value ? '1px solid #ab5240' : '0px'
+        }
     });
+    
 
     Webflow.destroy();
     Webflow.ready();
