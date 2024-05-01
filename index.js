@@ -66,10 +66,17 @@ async function generateReport(form) {
     const name = form.getElementsByTagName('input')[0].value;
     const email = form.getElementsByTagName('input')[1].value;
 
-    console.log('submitting form');
+    // hubspot tracking
+    const hubspotForm = document.querySelector('#hsForm_c5c72825-9cc6-461d-abb7-de30160b9c93')
+    const hubspotEmail = hubspotForm.querySelector('input[name="email"]')
+    hubspotEmail.value = email
+
+    hubspotForm.submit()
+    console.log("hubspot form submitted")
+
+
     const API_URL =
         'https://roi-calculator-self.vercel.app/api';
-    // 'http://www.localhost:3000/api';
 
     if (currentFormSelection === 'sales') {
         await fetch(`${API_URL}/sales`, {
@@ -138,6 +145,8 @@ async function generateReport(form) {
                 console.log(err);
             });
     }
+    
+    console.log("default form submitted")
 }
 
 selectionButtons[0].addEventListener('click', function() {
