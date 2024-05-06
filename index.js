@@ -192,7 +192,7 @@ function handleFormSelectionChange(value) {
         if(windowWidth < 768){
             button.style.background = buttonValue === value ? '#B5C1F0' : '#ebf0ff'
         }else{
-            button.style.borderBottom = buttonValue === value ? '1px solid #ab5240' : '0px'
+            button.style.borderBottom = buttonValue === value ? '2px solid #ab5240' : '0px'
         }
     });
     
